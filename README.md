@@ -1,4 +1,4 @@
-# htaccess-best-web-security-practices
+# htaccess best web security practices, a better htaccess code
 Hi Folks, This is the htaccess settings to use within your application. No one can assure you that any Settings could make an Application 100% Safe. But we can make it much.. much.. much tedious &amp; hard to break.... :) So let them work...
 
 ```sh
