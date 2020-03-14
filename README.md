@@ -1,4 +1,4 @@
-# Better HTACCESS Better Website Security
+# Better HTACCESS Better Web Security
 ### htaccess best web security practices, a better htaccess code
 
 Hi Folks,
