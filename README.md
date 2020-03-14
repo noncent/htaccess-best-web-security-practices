@@ -4,7 +4,7 @@ Hi Folks, This is the htaccess settings to use within your application. No one c
 ```sh
 # =-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 #
-#    PROD- HTACCESS: APACHE Config - By Neeraj Singh <neeraj.singh@digitaslbi.com>
+#    PROD- HTACCESS: APACHE Config - By Neeraj Singh <neeraj.singh@digitas.com>
 #
 # =-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -17,6 +17,15 @@ Hi Folks, This is the htaccess settings to use within your application. No one c
 #                                                 |/                                                                  |___/
 #           |___/
 
+# =-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+# TO ENABLE Cross-Origin Resource Sharing (CORS)
+# Cross-Origin Resource Sharing (CORS) allows web browser to validate and web server
+# to provide a way to consume and provide cross-site content and access controls.
+# =-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, PATCH, DELETE"
+Header always set Access-Control-Allow-Headers: Authorization
 
 # =-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 # TO ENABLE DEFLATE COMPRESSION ENABLE *filter_module
@@ -65,7 +74,7 @@ SetOutputFilter DEFLATE
 </IfModule>
 
 # =-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-# EXPIREATION SETTINGS
+# SET EXPIRATION SETTINGS
 # =-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 <IfModule mod_headers.c>
@@ -76,7 +85,7 @@ SetOutputFilter DEFLATE
 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-# LEVERAGE BROWSER CACHING
+# SET LEVERAGE BROWSER CACHING
 # =-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 <IfModule mod_expires.c>
@@ -134,7 +143,7 @@ DirectoryIndex index.php index.html
 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-# SET YOUR DEVELOPMENT ENVIRONMENT
+# SET YOUR CodedIgniter DEVELOPMENT ENVIRONMENT
 # =-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 SetEnv CI_ENV production
@@ -191,11 +200,11 @@ RewriteRule .* index.php [F]
 # REDIRECT HTTP TRAFFIC TO HTTPS
 # =-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-# Normal Server
+# For Normal Server
 # - RewriteCond %{HTTPS} off
 # - RewriteRule (.*) https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
 
-# Load Balancing Server
+# For Load Balancing Server
 RewriteEngine On
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
