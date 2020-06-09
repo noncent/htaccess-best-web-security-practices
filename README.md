@@ -362,6 +362,21 @@ FileETag None
 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+# SAME SITE FOR COOKIE  - Set Cookie Same Site only
+# 
+# Apache2 >= 2.2.4
+# Header edit Set-Cookie ^(.*)$ "$1;{HttpOnly};{Secure};{SameSite=Strict}"
+#
+# Apache < 2.2.4
+# Header set Set-Cookie "HttpOnly;Secure;SameSite=Strict"
+# =-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+<ifmodule mod_headers.c>
+Header edit Set-Cookie ^(.*)$ "$1;HttpOnly;SameSite=Strict"
+</ifmodule> 
+
+
+# =-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 # Avoid HTTP method
 # =-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
